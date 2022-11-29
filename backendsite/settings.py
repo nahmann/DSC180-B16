@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls',
-    # 'test1',  # not implemented yet
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

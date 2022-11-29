@@ -25,7 +25,7 @@ class Interaction(models.Model):
     ephIDspotter = models.ForeignKey(EphID, on_delete=models.CASCADE) # ephID sending this interaction
     ephIDspotted = models.ForeignKey(EphID, on_delete=models.CASCADE) # ephID they claim to have spotted
 
-    ephIDspotted = models.ForeignKey(Location, on_delete=models.CASCADE) # location of interaction
+    location = models.ForeignKey(Location, on_delete=models.CASCADE) # location of interaction
     
     
     pub_date = models.DateTimeField('date published')
