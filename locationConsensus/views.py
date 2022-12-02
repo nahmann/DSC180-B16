@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from .serializers import *
-from .models import *
+from .models import Interaction, EphID, Location
 
 class InteractionViewSet(viewsets.ModelViewSet):
     """
@@ -20,5 +20,5 @@ class LocationViewSet(viewsets.ModelViewSet):
     """
     API endpoint allows locations to be viewed or edited.
     """
-    queryset = EphID.objects.all().order_by('-location')
+    queryset = Location.objects.all().order_by('-location')
     serializer_class = LocationSerializer
