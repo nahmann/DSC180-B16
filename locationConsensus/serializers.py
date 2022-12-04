@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Interaction, EphID, Location
+from .models import *
 
 class InteractionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
