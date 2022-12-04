@@ -51,13 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polls',
     'locationConsensus',
-    'quickstart',
     'rest_framework',
 ]
 
-# https://stackoverflow.com/questions/25375448/django-rest-framework-missing-static-directory
 REST_FRAMEWORK = {
     # Use hyperlinked styles by default.
     # Only used if the `serializer_class` attribute is not set on a view.
