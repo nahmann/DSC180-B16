@@ -11,6 +11,6 @@ router.register(r'locations', views.LocationViewSet, basename='location')
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', views.index, name='index'),
-    path('locationConsensus/', include(router.urls)),
+    path('locationConsensus/', include((router.urls, 'locationConsensus'), namespace='locationConsensus')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
