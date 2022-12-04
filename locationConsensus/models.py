@@ -17,9 +17,13 @@ class Location(models.Model):
 class Interaction(models.Model):
     interactionID = models.CharField(max_length=20)
     # spotter = models.ForeignKey(EphID, on_delete=models.CASCADE, related_name='EphID_spotters')
+    spotter = "testing"
     # spotted = models.ForeignKey(EphID, on_delete=models.CASCADE, related_name='EphIDs_spotted')
+    spotted = "testing"
     # location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='locations')
-    # time = models.DateTimeField('time occured')
+    location = "testing"
+    time = models.DateTimeField('time occured')
+    # time = "testing"
 
     def __str__(self):
         return self.interactionID
