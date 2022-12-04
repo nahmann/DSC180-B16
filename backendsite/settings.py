@@ -90,11 +90,17 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
+
         'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "db3vjrs0pg1e9q",
+        "USER": "mymbtfkbakwgle",
+        "PASSWORD": "241cc8b5d501c6024e5dd45af9d7e9c820b817b7df4c63c23d35816f6feefaa1",
+        "HOST": "ec2-54-163-34-107.compute-1.amazonaws.com",
+        "PORT": "5432",
     }
 }
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
