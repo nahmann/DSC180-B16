@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Decentralized Location Consensus Home</h1>
+  <p>Welcome to our DSC 180A project backend!</p>
+  <h2>Dynamic content</h2>
+  <p>Information stored in the database</p>
+  <ul>
+    <li><strong>Interactions:</strong> {{ num_interactions }}</li>
+    <li><strong>EphIDs:</strong> {{ num_ephIDs }}</li>
+  </ul>
+{% endblock %}
