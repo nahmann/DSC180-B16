@@ -15,13 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', include('locationConsensus.urls')),
     path('polls/', include('polls.urls')),
     path('quickstart/', include('quickstart.urls')),
-    path('locationConsensus/', include('locationConsensus.urls')),
     path('admin/', admin.site.urls),
 ]
 
