@@ -16,9 +16,9 @@ This website functions as a webservice backend to our decentrailized location co
 
 If you would like to run this website locally, you can install the necessary packages and run the following code in the terminal. Note that the local development version of the server utilizes sqlite3 as the database since it is easier to locally utilize than Postgres which we use on our Heroku server.
 
-`python manage.py makemigrations` - sets up the migrations for the database
-`python manage.py migrate` - makes the migration files
-`python manage.py runserver` - will run the server which can then be accessed at 127.0.0.1
+`python manage.py makemigrations` - sets up the migrations for the database  
+`python manage.py migrate` - makes the migration files  
+`python manage.py runserver` - will run the server which can then be accessed at 127.0.0.1  
 
 
 ## Contains parts of code modified from the following tutorials:
