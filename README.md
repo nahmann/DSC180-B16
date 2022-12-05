@@ -7,6 +7,9 @@ Alex Guan
 Mason Chan  
 Nathan Ahmann  
 
+Server Demo w/ GET and POST:
+https://youtu.be/Ixj5MV3JIbA
+
 ## Contains parts of code modified from the following tutorials:
 https://docs.djangoproject.com/en/4.1/intro/   
 https://github.com/heroku/python-getting-started  
