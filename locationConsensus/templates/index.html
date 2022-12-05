@@ -6,8 +6,8 @@
   <h2>Information stored in the database</h2>
   <ul>
     <li><strong>Interactions:</strong> {{ num_interactions }}</li>
-    <li><strong>EphIDs:</strong> {{ num_ephIDs }}</li>
-    <li><strong>Locations:</strong> {{ num_locations }}</li>
+    <li><strong>Number of Unique Users:</strong> {{ num_spotter }}</li>
+    <li><strong>Number of Unique Locations:</strong> {{ num_locations }}</li>
   </ul>
   <p><a href="{% url 'locationConsensus:api-root' %}">Link to API</a></p>
 {% endblock %}
