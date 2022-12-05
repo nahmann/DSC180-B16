@@ -16,17 +16,16 @@ class Location(models.Model):
 
 class Interaction(models.Model):
     interactionID = models.CharField(max_length=20)
-    # spotter = models.ForeignKey(EphID, on_delete=models.CASCADE, related_name='EphID_spotters')
-    spotter = "testing"
+    # spotter = models.ForeignKey(EphID, on_delete=models.CASCADE, related_name='EphID_spotters') # keeping old methods incase we want to try these lines in the future
+    spotter = models.CharField(max_length=20)
     # spotted = models.ForeignKey(EphID, on_delete=models.CASCADE, related_name='EphIDs_spotted')
-    spotted = "testing"
+    spotted = models.CharField(max_length=20)
     # location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='locations')
-    location = "testing"
+    location = models.CharField(max_length=20)
     time = models.DateTimeField('time occured')
-    # time = "testing"
 
     def __str__(self):
         return self.interactionID
 
-    # def was_published_recently(self):
-    #     return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
