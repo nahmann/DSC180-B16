@@ -1,7 +1,7 @@
 from rest_framework import viewsets
-from .serializers import *
 from django.shortcuts import render
-from .models import Interaction
+from .models import *
+from .serializers import *
 
 #######################################################################################
 
@@ -10,14 +10,12 @@ def index(request):
 
     # Generate counts of some of the main objects
     num_interactions = Interaction.objects.count()
-    num_spotter = Interaction.objects.values('spotter').distinct().count()
-    num_spotted = Interaction.objects.values('spotted').distinct().count()
-    num_locations = Interaction.objects.values('location').distinct().count()
+    num_users = User.objects.count()
+    num_locations = Location.objects.count()
 
     context = {
         'num_interactions': num_interactions,
-        'num_spotter': num_spotter,
-        'num_spotted': num_spotted,
+        'num_users': num_users,
         'num_locations': num_locations,
     }
 
@@ -26,6 +24,19 @@ def index(request):
 
 
 #######################################################################################
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows Users to be viewed or edited.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class LocationViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows Locations to be viewed or edited.
+    """
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
 
 class InteractionViewSet(viewsets.ModelViewSet):
     """

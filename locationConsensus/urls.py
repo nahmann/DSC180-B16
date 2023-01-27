@@ -4,6 +4,8 @@ from locationConsensus import views
 
 router = routers.DefaultRouter()
 router.register(r'interactions', views.InteractionViewSet, basename='interaction')
+router.register(r'users', views.UserViewSet, basename='user')
+router.register(r'locations', views.LocationViewSet, basename='location')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
