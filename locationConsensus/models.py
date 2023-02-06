@@ -4,7 +4,14 @@ import json
 
 class User(models.Model):
     userID = models.CharField(max_length=20, primary_key=True, unique=True)
-    verificationStatus = models.CharField(max_length=50, default='default')
+
+    def verify(userID):
+        if userID == 'co':
+            return 'worked'
+        else:
+            return userID
+
+    verificationStatus = models.CharField(max_length=50, default=verify(userID))
 
 class Interaction(models.Model):
     from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='spotter')

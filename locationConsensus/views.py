@@ -29,9 +29,6 @@ def verify(request, userID = ''):
     else:
         output = 'No'
 
-    if User.objects.filter(userID='alex') or User.objects.filter(userID='Alex'):
-        output = 'lol Alex is dumb'
-
     context = {
         'username': userID,
         'output': output
