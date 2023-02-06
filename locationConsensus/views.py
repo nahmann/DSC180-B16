@@ -11,16 +11,32 @@ def index(request):
     # Generate counts of some of the main objects
     num_interactions = Interaction.objects.count()
     num_users = User.objects.count()
-    num_locations = Location.objects.count()
 
     context = {
         'num_interactions': num_interactions,
         'num_users': num_users,
-        'num_locations': num_locations,
     }
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+#######################################################################################
+
+def verify(request, userID = ''):
+    
+    if User.objects.filter(userID=userID):
+        output = userID + ' is in the database'
+    else:
+        output = 'No'
+
+    if User.objects.filter(userID='alex') or User.objects.filter(userID='Alex'):
+        output = 'lol Alex is dumb'
+
+    context = {
+        'username': userID,
+        'output': output
+    }
+    return render(request, 'verify.html', context=context)
 
 
 #######################################################################################
@@ -30,13 +46,6 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-class LocationViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows Locations to be viewed or edited.
-    """
-    queryset = Location.objects.all()
-    serializer_class = LocationSerializer
 
 class InteractionViewSet(viewsets.ModelViewSet):
     """
