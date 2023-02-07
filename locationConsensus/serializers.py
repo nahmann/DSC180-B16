@@ -4,7 +4,7 @@ from .models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['userID', 'verificationStatus']
+        fields = ['userID']
 
 class InteractionSerializer(serializers.ModelSerializer):
     class Meta:

@@ -27,7 +27,11 @@ def verify(request, userID = ''):
     if User.objects.filter(userID=userID):
         output = userID + ' is in the database'
     else:
-        output = 'No'
+        output = userID + ' is NOT in the database'
+
+
+    if userID == 'alex':
+        output = 'lol XD alex is super smart'
 
     context = {
         'username': userID,
