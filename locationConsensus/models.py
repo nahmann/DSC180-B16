@@ -15,3 +15,6 @@ class Interaction(models.Model):
 
     def get_spotted_users (self):
         return json.loads(self.spotted_users)
+
+class Blacklist(models.Model):
+    userID = models.CharField(max_length=20, primary_key=True, unique=True)

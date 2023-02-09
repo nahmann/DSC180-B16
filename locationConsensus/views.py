@@ -54,3 +54,10 @@ class InteractionViewSet(viewsets.ModelViewSet):
     """
     queryset = Interaction.objects.all().order_by('-time')
     serializer_class = InteractionSerializer
+
+class BlackistViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows list of blacklisted users to be viewed or edited.
+    """
+    queryset = Blacklist.objects.all()
+    serializer_class = BlacklistSerializer
