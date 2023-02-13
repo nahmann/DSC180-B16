@@ -6,15 +6,9 @@ class User(models.Model):
     userID = models.CharField(max_length=20, primary_key=True, unique=True)
 
 class Interaction(models.Model):
-    from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='spotter')
-    spotted_users = models.CharField(max_length=50)
+    from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='from_user')
+    spotted_users = models.CharField(max_length=200)
     time = models.DateTimeField(default=timezone.now)
 
-    def set_spotted_users (self, lst):
-        self.spotted_users = json.dumps(lst)
-
-    def get_spotted_users (self):
-        return json.loads(self.spotted_users)
-
 class Blacklist(models.Model):
-    userID = models.CharField(max_length=20, primary_key=True, unique=True)
+    userID = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')

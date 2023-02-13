@@ -33,8 +33,7 @@ except KeyError:
     exit()
 
 # count number of times a user was spotted / number of users
-# trust algorithm: if a majority of the people say you were spotted, then 
-# you are untrustworthy
+# trust algorithm: if a majority of people around you do not agree with your location then you are untrustworthy
 spotted_percentage = past_hour_df.groupby("spotted_users")["from_user"].count() / past_hour_df["from_user"].nunique()
 flagged_users = spotted_percentage[spotted_percentage > cuttoff]
 

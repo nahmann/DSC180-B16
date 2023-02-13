@@ -29,10 +29,6 @@ def verify(request, userID = ''):
     else:
         output = userID + ' is NOT in the database'
 
-
-    if userID == 'alex':
-        output = 'lol XD alex is super smart'
-
     context = {
         'username': userID,
         'output': output
