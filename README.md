@@ -1,5 +1,4 @@
-# DSC 180A - Decentralized Location Consensus
-Section B16  
+# DSC 180 B16 - Decentralized Location Consensus
 
 Group Members:  
 Alan Miyazaki  
