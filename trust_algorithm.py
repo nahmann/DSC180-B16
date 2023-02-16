@@ -1,3 +1,4 @@
+import json
 import requests
 from datetime import datetime, timezone, timedelta
 import pandas as pd
@@ -7,36 +8,64 @@ base_url = "https://dsc180-decentralized-location.herokuapp.com/locationConsensu
 interaction_url = base_url + "interactions/"
 blacklist_url = base_url + "blacklist/"
 
-# fields
-cuttoff = 0.5 # cutoff percentage to be marked for blacklist
-now = datetime.now(timezone.utc)
-past_hour = now - timedelta(hours=1) # script is run hourly
 
-def update_blacklist(users):
+def update_blacklist(users, url = None):
     """
     Updates blacklist with new flagged users
+
+    users: list of users to update blacklist
+    url: url of blacklist to update. Uses the site blacklist url by default
     """
+    if url is None:
+        url = blacklist_url
+
     for user in users:
         toSend  = {'userID': user}
-        requests.post(blacklist_url, data = toSend)
+        requests.post(url, data = toSend)
 
-try:
-    # gets interaction data
-    data = requests.get(interaction_url).json()
-    df = pd.DataFrame(data)
+def trust_alg(data, time = None, hours = None):
+    """
+    Runs trust algorithm on data passed in. Current trust algorithm is based 
+    off of a majority trust model. It will return a list of untrustworthy users. 
+    By default, the method will run the algorithm on data within the past hour.
 
-    # filter data to only include interactions within the past hour
-    df["time"] = pd.to_datetime(df["time"])
-    past_hour_df = df.loc[df["time"] > past_hour]
-except KeyError:
-    print("no time data")
-    exit()
+    data: Expects json data retrieved from requests. Expects time, from_user,
+    and spotted_users as columns in the data
+    time: A datetime object of what date and time to use to filter data. By default 
+    the method will use the current date and time in utc timezone.
+    hours: number of hours to use to make a timeframe of valid data. Hours will 
+    be subtracted from the time parameter to make the timeframe. By default the 
+    method will consider only the past hour.
+    """
 
-# count number of times a user was spotted / number of users
-# trust algorithm: if a majority of people around you do not agree with your location then you are untrustworthy
-spotted_percentage = past_hour_df.groupby("spotted_users")["from_user"].count() / past_hour_df["from_user"].nunique()
-flagged_users = spotted_percentage[spotted_percentage > cuttoff]
+    if time is None:
+        time = datetime.now(timezone.utc)
 
-update_blacklist(flagged_users.index)
+    if hours is None:
+        hours = 1
 
-print("Trust algorithm ran successfully")
+    cutoff = 0.5 # cutoff percentage to be marked for blacklist
+    time = time.astimezone(timezone.utc) # converts datetime to utc time incate date is a passed parameter
+    past_timeframe = time - timedelta(hours)
+
+    try:
+        df = pd.DataFrame(data)
+
+        # filter data to only include interactions within the past timeframe. Default is past hour
+        df["time"] = pd.to_datetime(df["time"])
+        df = df.loc[df["time"] > past_timeframe]
+    except KeyError:
+        print("no time data")
+        exit()
+
+    # cleaning spotted_users so that it becomes a list
+    df["spotted_users"] = df["spotted_users"].apply(json.loads)
+
+    # turning every name in spotted user into rows
+    df = df.explode("spotted_users")
+
+    # count number of times a user was spotted / number of users
+    # trust algorithm: if a majority of people around you do not agree with your location then you are untrustworthy
+    spotted_percentage = df.groupby("spotted_users")["from_user"].count() / df["from_user"].nunique()
+    flagged_users = spotted_percentage[spotted_percentage > cutoff]
+    return flagged_users.index.tolist()
