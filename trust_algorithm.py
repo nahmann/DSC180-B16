@@ -59,7 +59,7 @@ def trust_alg(data, time = None, hours = None):
         exit()
 
     # cleaning spotted_users so that it becomes a list
-    df["spotted_users"] = df["spotted_users"].apply(json.loads)
+    df["spotted_users"] = df["spotted_users"].str[1:-1].str.split(", ")
 
     # turning every name in spotted user into rows
     df = df.explode("spotted_users")
