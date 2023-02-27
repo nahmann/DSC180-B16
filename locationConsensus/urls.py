@@ -2,6 +2,8 @@ from django.urls import include, path
 from rest_framework import routers
 from locationConsensus import views
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 router = routers.DefaultRouter()
 router.register(r'interactions', views.InteractionViewSet, basename='interaction')
 router.register(r'users', views.UserViewSet, basename='user')
@@ -15,3 +17,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('verify/<userID>/', views.verify, name='verify')
 ]
+
+urlpatterns +=  staticfiles_urlpatterns()

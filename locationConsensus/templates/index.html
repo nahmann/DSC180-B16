@@ -31,7 +31,13 @@
       of its users.
     </p2>
 
-    <div2 style="text-align: center;"><img src="diagram.png" alt="Model Example" width="300" height="300" /></div2>
+    <h4>
+      Diagram Example
+    </h4>
+    <div2 style='text-align: center;'>
+      {% load static %}
+      <img src="{% static "diagram.png" %}" alt="test" />
+    </div2>
       
 
     <h4>
@@ -43,7 +49,7 @@
       by considering the majority rule of BLE signals to authenticate the location
       of detected users.
     </p3>
-    <p><a href="{% url 'locationConsensus:api-root' %}">Here you may access our API</a></p>
+    <p><a href='{% url 'locationConsensus:api-root' %}'>Here you may access our API</a></p>
 
     <h2>Information stored in the database</h2>
     <ul>
