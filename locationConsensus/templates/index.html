@@ -1,12 +1,54 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>DSC 180A - Decentralized Location Consensus</h1>
-  <p>Welcome to our DSC 180A project backend!</p>
-  <h2>Information stored in the database</h2>
-  <ul>
-    <li><strong>Interactions:</strong> {{ num_interactions }}</li>
-    <li><strong>Number of Unique Users:</strong> {{ num_users }}</li>
-  </ul>
-  <p><a href="{% url 'locationConsensus:api-root' %}">Link to API</a></p>
+  <style>
+    h1 {text-align: center;}
+    p {text-align: center;}
+    h3 {text-align: center;}
+    p2 {text-align: center;}
+    h4 {text-align: center;}
+    p3 {text-align: center;}
+    body {background: linear-gradient(to bottom, #99ccff 0%, #ccccff 100%);}
+    body2 {white-space: nowrap;}
+  </style>
+
+  <body>
+    
+    <h1> DSC 180A - Decentralized Location Consensus Through Proximity Tracing</h1>
+    <p>Welcome to our DSC 180A project backend!</p>
+
+    <h3>
+      What is our project about?
+    </h3>
+    <p2>
+      The project focuses on the legitimacy of mobile device locations, 
+      without compromising the privacy of its user. Several popular mobile 
+      applications revolve around proximity to other devices, such as games 
+      like Pokemon Go or dating apps like Tinder, Bumble, or Hinge. However, 
+      it can be rather easy for people to spoof or alter their location data 
+      for the sake of misleading these applications. Our project aims to 
+      authenticate the location of mobile devices without violating the privacy 
+      of its users.
+    </p2>
+
+    <div2 style="text-align: center;"><img src="diagram.png" alt="Model Example" width="300" height="300" /></div2>
+      
+
+    <h4>
+      Our Team
+    </h4>
+    <p3>
+      As the server team, our job is to recieve IDs that the phones 
+      send and populate a black list to relay who is untrustworthy. We do this
+      by considering the majority rule of BLE signals to authenticate the location
+      of detected users.
+    </p3>
+    <p><a href="{% url 'locationConsensus:api-root' %}">Here you may access our API</a></p>
+
+    <h2>Information stored in the database</h2>
+    <ul>
+      <li><strong>Interactions:</strong> {{ num_interactions }}</li>
+      <li><strong>Number of Unique Users:</strong> {{ num_users }}</li>
+    </ul>
+  </body>
 {% endblock %}
