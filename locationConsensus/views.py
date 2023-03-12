@@ -10,39 +10,19 @@ def index(request):
 
     # Generate counts of some of the main objects
     num_interactions = Interaction.objects.count()
-    num_users = User.objects.count()
+    num_users = Interaction.objects.all().distinct().count()
 
     context = {
         'num_interactions': num_interactions,
         'num_users': num_users,
+        'num_blacklist': num_users,
     }
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
 
-#######################################################################################
-
-def verify(request, userID = ''):
-    
-    if User.objects.filter(userID=userID):
-        output = userID + ' is in the database'
-    else:
-        output = userID + ' is NOT in the database'
-
-    context = {
-        'username': userID,
-        'output': output
-    }
-    return render(request, 'verify.html', context=context)
-
 
 #######################################################################################
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows Users to be viewed or edited.
-    """
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
 class InteractionViewSet(viewsets.ModelViewSet):
     """
