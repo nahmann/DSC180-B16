@@ -9,6 +9,14 @@
     <li><strong>Blacklisted users after running:</strong> {{ num_blacklist_after }}</li>
     <li><strong>Number of interactions:</strong> {{ num_interactions }}</li>
   </ul>
-</body>
 
+  <h3>Some useful links for testing:</h3>
+  <ul>
+    <li><a href='{% url 'locationConsensus:api-root' %}'>API Link</a></li>
+    <li><a href='{% url 'clearInteractions' %}'>Clear Interactions </a></li>
+    <li><a href='{% url 'clearBlacklist' %}'>Clear Blacklist</a></li>
+    <li><a href='{% url 'runScript' %}'>Update Blacklist</a></li>
+  </ul>
+
+</body>
 {% endblock %}
