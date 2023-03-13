@@ -19,6 +19,8 @@ urlpatterns = [
 
     path('clearBlacklist', views.clearBlacklist, name='clearBlacklist'),
     path('clearInteractions', views.clearInteractions, name='clearInteractions'),
+
+    path('blacklist', views.blacklist_list, name='blacklist'),
 ]
 
 urlpatterns +=  staticfiles_urlpatterns()

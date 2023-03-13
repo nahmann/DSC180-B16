@@ -67,6 +67,21 @@ def clearInteractions(request):
 
 #######################################################################################
 
+def blacklist_list(request):
+    out = []
+    for user in Blacklist.objects.all():
+        out += user.userID
+    
+    print(out)
+
+    context = {
+        'info' : out
+    }
+
+    return render(request, 'blacklist.html', context=context)
+
+#######################################################################################
+
 class InteractionViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows interactions to be viewed or edited.
