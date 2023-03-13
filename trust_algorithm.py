@@ -4,8 +4,8 @@ from datetime import datetime, timezone, timedelta
 import pandas as pd
 
 # urls of site
-# base_url = "https://dsc180-decentralized-location.herokuapp.com/locationConsensus/"
-base_url = "https://http://127.0.0.1:8000//locationConsensus/" # local test url
+base_url = "https://dsc180-decentralized-location.herokuapp.com/locationConsensus/"
+# base_url = "http://127.0.0.1:8000/locationConsensus/" # local test url
 interaction_url = base_url + "interactions/"
 blacklist_url = base_url + "blacklist/"
 
