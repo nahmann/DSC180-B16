@@ -2,12 +2,13 @@
 
 {% block content %}
 <body>
-  <h1>This button will run the blacklist script manually</h1>
-  <!--https://stackoverflow.com/questions/54438473/how-to-execute-file-py-on-html-button-press-using-django-->
-  <form method='post'>
-    {% csrf_token %}
-    <button type='submit' name='run_script'>Run script</button>
-</form>
+  <h1>By simply going to this page the blacklist update script will run</h1>
+  <h2>Information about Database related to running the script</h1>
+  <ul>
+    <li><strong>Blacklisted users before running:</strong> {{ num_blacklist_before }}</li>
+    <li><strong>Blacklisted users after running:</strong> {{ num_blacklist_after }}</li>
+    <li><strong>Number of interactions:</strong> {{ num_interactions }}</li>
+  </ul>
 </body>
 
 {% endblock %}

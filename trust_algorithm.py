@@ -4,7 +4,8 @@ from datetime import datetime, timezone, timedelta
 import pandas as pd
 
 # urls of site
-base_url = "https://dsc180-decentralized-location.herokuapp.com/locationConsensus/"
+# base_url = "https://dsc180-decentralized-location.herokuapp.com/locationConsensus/"
+base_url = "https://http://127.0.0.1:8000//locationConsensus/" # local test url
 interaction_url = base_url + "interactions/"
 blacklist_url = base_url + "blacklist/"
 
@@ -18,6 +19,8 @@ def update_blacklist(users, url = None):
     """
     if url is None:
         url = blacklist_url
+
+    print(users)
 
     for user in users:
         toSend  = {'userID': user}

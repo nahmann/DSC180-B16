@@ -2,8 +2,8 @@ import requests
 from trust_algorithm import trust_alg, update_blacklist
 
 # urls of site
-base_url = "https://dsc180-decentralized-location.herokuapp.com/locationConsensus/" # herokuapp url
-# base_url = "https://http://127.0.0.1:8000//locationConsensus/" # local test url
+# base_url = "https://dsc180-decentralized-location.herokuapp.com/locationConsensus/" # herokuapp url
+base_url = "https://http://127.0.0.1:8000//locationConsensus/" # local test url
 interaction_url = base_url + "interactions/"
 
 # gets interaction data

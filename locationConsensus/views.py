@@ -24,12 +24,12 @@ def index(request):
 
 def runScript(request):
     num_blacklist_before = Blacklist.objects.count()
-
-    if request.method == 'POST' and 'run_script' in request.POST:
-        import run_algorithm
+    
+    import run_algorithm # will run by importing
 
     num_blacklist_after = Blacklist.objects.count()
     num_interactions = Interaction.objects.count()
+
     context = {
         'num_blacklist_after' : num_blacklist_after,
         'num_blacklist_before' : num_blacklist_before,
