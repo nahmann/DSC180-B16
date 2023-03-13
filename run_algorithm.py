@@ -12,4 +12,4 @@ data = requests.get(interaction_url).json()
 flagged_users = trust_alg(data)
 update_blacklist(flagged_users)
 
-print("Trust algorithm ran successfully")
+print("Trust algorithm ran successfully!")

@@ -20,8 +20,6 @@ def update_blacklist(users, url = None):
     if url is None:
         url = blacklist_url
 
-    print(users)
-
     for user in users:
         toSend  = {'userID': user}
         requests.post(url, data = toSend)
@@ -54,12 +52,12 @@ def trust_alg(data, time = None, hours = None):
     try:
         df = pd.DataFrame(data)
 
-        print(df.columns)
         # filter data to only include interactions within the past timeframe. Default is past hour
         df["time"] = pd.to_datetime(df["time"])
         df = df.loc[df["time"] > past_timeframe]
     except KeyError:
-        print("no time data")
+        print("No time data found in df! Columns found printed below:")
+        print(df.columns)
         exit()
         
 
