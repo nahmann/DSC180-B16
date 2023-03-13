@@ -58,7 +58,6 @@ def trust_alg(data, time = None, hours = None):
     except KeyError:
         print("No time data found in df! Columns found printed below:")
         print(df.columns)
-        exit()
         
 
     # cleaning spotted_users so that it becomes a list
