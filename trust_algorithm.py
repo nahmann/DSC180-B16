@@ -51,12 +51,14 @@ def trust_alg(data, time = None, hours = None):
     try:
         df = pd.DataFrame(data)
 
+        print(df.columns)
         # filter data to only include interactions within the past timeframe. Default is past hour
         df["time"] = pd.to_datetime(df["time"])
         df = df.loc[df["time"] > past_timeframe]
     except KeyError:
         print("no time data")
         exit()
+        
 
     # cleaning spotted_users so that it becomes a list
     df["spotted_users"] = df["spotted_users"].str[1:-1].str.split(", ")

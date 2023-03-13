@@ -15,6 +15,8 @@ urlpatterns = [
     path('locationConsensus/', include((router.urls, 'locationConsensus'), namespace='locationConsensus')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
+    path('runScript', views.runScript, name='runScript'),
+
     path('clearBlacklist', views.clearBlacklist, name='clearBlacklist'),
     path('clearInteractions', views.clearInteractions, name='clearInteractions'),
 ]

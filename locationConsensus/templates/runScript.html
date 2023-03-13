@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+  <h1>This button will run the blacklist script manually</h1>
+  <!--https://stackoverflow.com/questions/54438473/how-to-execute-file-py-on-html-button-press-using-django-->
+  <form method='post'>
+    {% csrf_token %}
+    <button type='submit' name='run_script'>Run script</button>
+</form>
+</body>
+
+{% endblock %}
