@@ -24,6 +24,34 @@ def index(request):
 
 #######################################################################################
 
+def clearBlacklist(request):
+    num_before = Blacklist.objects.count()
+    Blacklist.objects.all().delete()
+    num_after = Blacklist.objects.count()
+
+    context = {
+        'type' : 'blacklist',
+        'num_before' : num_before,
+        'num_after' : num_after,
+    }
+
+    return render(request, 'clear_success.html', context=context)
+
+def clearInteractions(request):
+    num_before = Interaction.objects.count()
+    Interaction.objects.all().delete()
+    num_after = Interaction.objects.count()
+
+    context = {
+        'type' : 'interactions',
+        'num_before' : num_before,
+        'num_after' : num_after,
+    }
+
+    return render(request, 'clear_success.html', context=context)
+
+#######################################################################################
+
 class InteractionViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows interactions to be viewed or edited.

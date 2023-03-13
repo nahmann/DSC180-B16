@@ -14,6 +14,9 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('locationConsensus/', include((router.urls, 'locationConsensus'), namespace='locationConsensus')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    path('clearBlacklist', views.clearBlacklist, name='clearBlacklist'),
+    path('clearInteractions', views.clearInteractions, name='clearInteractions'),
 ]
 
 urlpatterns +=  staticfiles_urlpatterns()

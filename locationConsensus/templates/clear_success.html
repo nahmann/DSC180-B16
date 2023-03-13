@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+  <h1>Information about Database</h1>
+  <ul>
+    <li><strong>Type of Database cleared:</strong> {{ type }}</li>
+    <li><strong>Before clear:</strong> {{ num_before }}</li>
+    <li><strong>After clear (should be 0):</strong> {{ num_after }}</li>
+  </ul>
+</body>
+
+{% endblock %}
