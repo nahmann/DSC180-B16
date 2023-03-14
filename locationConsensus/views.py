@@ -70,9 +70,7 @@ def clearInteractions(request):
 def blacklist_list(request):
     out = []
     for user in Blacklist.objects.all():
-        out += user.userID
-    
-    print(out)
+        out.append(user.userID)
 
     context = {
         'info' : out
