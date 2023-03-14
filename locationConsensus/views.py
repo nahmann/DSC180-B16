@@ -50,7 +50,7 @@ def clearBlacklist(request):
         'num_after' : num_after,
     }
 
-    return render(request, 'clear_success.html', context=context)
+    return render(request, 'clear_database.html', context=context)
 
 def clearInteractions(request):
     num_before = Interaction.objects.count()
@@ -63,20 +63,7 @@ def clearInteractions(request):
         'num_after' : num_after,
     }
 
-    return render(request, 'clear_success.html', context=context)
-
-#######################################################################################
-
-def blacklist_list(request):
-    out = []
-    for user in Blacklist.objects.all():
-        out.append(user.userID)
-
-    context = {
-        'info' : out
-    }
-
-    return render(request, 'blacklist.html', context=context)
+    return render(request, 'clear_database.html', context=context)
 
 #######################################################################################
 
