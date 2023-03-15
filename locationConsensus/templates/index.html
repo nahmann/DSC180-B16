@@ -1,69 +1,134 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <style>
-    h1 {text-align: center;}
-    p {text-align: center;}
-    h3 {text-align: center;}
-    p2 {text-align: center;}
-    h4 {text-align: center;}
-    p3 {text-align: center;}
-    body {background: linear-gradient(to bottom, #99ccff 0%, #ccccff 100%);}
-    body2 {white-space: nowrap;}
-  </style>
+  <header>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </header>
 
   <body>
     
-    <h1> DSC 180A - Decentralized Location Consensus Through Proximity Tracing</h1>
-    <p>Welcome to our DSC 180A project backend!</p>
+    <nav class="navbar bg-body-tertiary fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Offcanvas navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'locationConsensus:api-root' %}">API</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Project Info</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">FAQ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://github.com/nahmann/DSC180-B16">Github</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'poster' %}">Poster</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="https://docs.google.com/document/d/1b4y0zB06y4HQ-aKkMiU41FJzYceVkcxbxp7MhrSX6FE/edit?usp=sharing">Report</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="https://hdsishowcase.com/">HDSI Showcase</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <br>
+    <br>
+
+    <h1 class="text-center"> DSC 180A - Decentralized Location Consensus Through Proximity Tracing</h1>
 
     <h3>
-      What is our project about?
+      video 
     </h3>
-    <p style = "width:80%; margin: auto;">
-      The project focuses on the legitimacy of mobile device locations, 
-      without compromising the privacy of its user. Several popular mobile 
-      applications revolve around proximity to other devices, such as games 
-      like Pokemon Go or dating apps like Tinder, Bumble, or Hinge. However, 
-      it can be rather easy for people to spoof or alter their location data 
-      for the sake of misleading these applications. In an effort to combat 
-      and catch potentially malicious users, our project involves a system 
-      to authenticate user location data without having one central authority 
-      in control of all the information. By leveraging the physical proximity 
-      necessary for devices to send and receive data through Bluetooth Low 
-      Energy signals, our system is able to detect users lying about their 
-      location without receiving any location information. Our portion of the 
-      project was creating the server backend that communicates with devices 
-      to store information about flagged users and process it for the purpose 
-      of adding malicious users to a blacklist.
-    </p>
 
-    <h4>
-      Diagram Example
-    </h4>
-    <div style='text-align: center;'>
-      {% load static %}
-      <img src="{% static "diagram.png" %}" alt="test" />
+    <h3>
+      Example
+    </h3>
+
+    <div class="container ">
+      <h3>
+        Example
+      </h3>
+  
+      <div class="row">
+        <div class="col-sm">
+          {% load static %}
+          <img src="{% static "updated_diagram.png" %}" alt="test" />
+        </div>
+        <div class="col-sm" id = "test">
+          <p>
+            Steps
+            <br>
+            1. The users are all physically at UCSD and have been physically near each other.
+            One person, in this case Kat, decides to spoof/change their location on their phone with a VPN.
+            As a result, Kat's phone is no longer declaring that it is in UCSD. All the other users are 
+            still declaring their location to be at UCSD. As a result, the phones of Alice, Bob, Daniel, and Emily 
+            all detect Kat's phone as being different and record her phone's ID. Kat's phone in return record 
+            the ids of the others since their location is different from itself.
+            <br>
+            2. After an hour, the phones will send the IDs they have collected to the server. 
+            <br>
+            3. The server runs an a trust algorithm to determine whose phone was lying about it's 
+            location. The algorithm we use was a majority voting system. In this example, Kat's 
+            phone has the most votes and is identified as the liar.
+            <br>
+            4. Kat's phone ID is then stored in a blocklist after being identified as the person who 
+            lied about their location.
+          </p>
+        </div>
+      </div>
     </div>
-      
 
-    <h4>
-      Our Team
-    </h4>
-    <p>
-      As the server team, our job is to recieve IDs that the phones 
-      send and populate a black list to relay who is untrustworthy. We do this
-      by considering the majority rule of BLE signals to authenticate the location
-      of detected users.
-    </p>
-    <p><a href='{% url 'locationConsensus:api-root' %}'>Here you may access our API</a></p>
+    <h3>
+      Project Info
+    </h3>
 
-    <p><a href='https://docs.google.com/document/d/1b4y0zB06y4HQ-aKkMiU41FJzYceVkcxbxp7MhrSX6FE/edit?usp=sharing'>Here you may access our full report</a></p>
+    <h3>
+      About us
+    </h3>
 
-    <h2>Information stored in the database</h2>
-    <ul>
-      <li><strong>Interactions:</strong> {{ num_interactions }}</li>
-      <li><strong>Number of Unique Users:</strong> {{ num_users }}</li>
-    </ul>
+    <h3>
+      FAQ
+    </h3>
+
+    <!-- Bootstrap javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 {% endblock %}

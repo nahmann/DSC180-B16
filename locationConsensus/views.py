@@ -20,6 +20,14 @@ def index(request):
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+#######################################################################################
+
+def poster(request):
+    """View function for poster."""
+
+    return render(request, 'index.html')
+
 #######################################################################################
 
 def runScript(request):
