@@ -20,6 +20,7 @@ urlpatterns = [
     path('clearBlacklist', views.clearBlacklist, name='clearBlacklist'),
     path('clearInteractions', views.clearInteractions, name='clearInteractions'),
     path('poster', views.poster, name='poster'),
+    path('report', views.report, name='report'),
 ]
 
 urlpatterns +=  staticfiles_urlpatterns()

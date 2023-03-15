@@ -3,8 +3,8 @@
 {% block content %}
 
   <body>
-    
-    <img src="{% static "poster.png" %}" alt="Poster">
+    {% load static %}
+    <img src="{% static 'poster.png' %}" alt="Poster">
     
   </body>
 {% endblock %}

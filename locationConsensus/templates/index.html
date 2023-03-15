@@ -11,7 +11,7 @@
     
     <nav class="navbar bg-body-tertiary fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Offcanvas navbar</a>
+        <a class="navbar-brand" href="#">DSC 180A - Decentralized Location Consensus Through Proximity Tracing</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,15 +30,6 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#">About us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Project Info</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">FAQ</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="https://github.com/nahmann/DSC180-B16">Github</a>
               </li>
 
@@ -47,22 +38,13 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="https://docs.google.com/document/d/1b4y0zB06y4HQ-aKkMiU41FJzYceVkcxbxp7MhrSX6FE/edit?usp=sharing">Report</a>
+                <a class="nav-link" href="{% url 'report' %}">Report</a>
               </li>
 
               <li class="nav-item">
                 <a class="nav-link" href="https://hdsishowcase.com/">HDSI Showcase</a>
               </li>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                </ul>
-              </li>
             </ul>
           </div>
         </div>
@@ -71,8 +53,6 @@
 
     <br>
     <br>
-
-    <h1 class="text-center"> DSC 180A - Decentralized Location Consensus Through Proximity Tracing</h1>
 
     <h3>
       video 
@@ -88,7 +68,7 @@
       </h3>
   
       <div class="row">
-        <div class="col-sm">
+        <div class="col-sm text-center">
           {% load static %}
           <img src="{% static "updated_diagram.png" %}" alt="test" />
         </div>
@@ -116,17 +96,79 @@
       </div>
     </div>
 
-    <h3>
-      Project Info
-    </h3>
 
-    <h3>
-      About us
-    </h3>
+    <div class = "text_box">
+      <h3>
+        Project Info
+      </h3>
 
-    <h3>
-      FAQ
-    </h3>
+      <p>
+        Many applications make use of location data in order to provide their 
+        services, but malicious users can disrupt these by manipulating or 
+        faking their location. In an effort to combat and catch these users, 
+        our project involves a system to authenticate user location data without 
+        having one central authority in control of all the information. By 
+        leveraging the physical proximity necessary for devices to send and 
+        receive data through Bluetooth Low Energy signals, our system is able 
+        to detect users lying about their location without receiving any location 
+        information. Our portion of the project was creating the server backend 
+        that communicates with devices to store information about flagged users 
+        and process it for the purpose of adding malicious users to a blacklist.
+
+        More technical details can be found in our report. You can find the link 
+        for the report on the side navigation
+
+      </p>
+    </div>
+    
+
+
+    <div class = "text_box">
+      <h3>
+        About us
+      </h3>
+
+      <p>
+        Hello, and thanks for taking an interest in our project. This site was part of our 
+        Data Science 180 Capstone project that we worked on for 2 quarters under a mentor. 
+        The first quarter consisted of recreating results, exploring a domain, and proposing 
+        a project that would then be completed in the second quarter. We were one of 66 
+        project groups in the 2022-2023 iteration of the class. A full list of all the 
+        teams can be found on the HDSI showcase website (https://hdsishowcase.com/). 
+  
+        <br>
+  
+        Our project is unique in that it consists of 2 teams under the same mentor: 
+        one for the app (Group B16-2) and one for the server (Group B16-2). We are 
+        the server-side team and consist of 4 members: Nathan Ahmann, Mason Chan, 
+        Alex Guan, and Alan Miyazaki. Our mentor was Haojian Jin. Over the course 
+        of this quarter, we developed a backend server (on this website) and successfully 
+        linked it to the Android devices running the app team's code. Together these create a fully functioning system
+  
+      </p>
+    </div>
+
+    
+    <div class = "text_box">
+      <h3>
+        FAQ
+      </h3>
+
+      <ul>
+        <li>
+          What is decentralized location consensus?
+        </li>
+        
+      </ul>
+      <p>
+        Decentralized Location Consensus means verifying users are at the 
+        location they claim to be. The decentralized part is saying that not 
+        all of the data should be stored in one place which helps protect 
+        privacy. The location consensus is that devices should reach a consensus 
+        of who is being truthful about their location.
+      </p>
+    </div>
+
 
     <!-- Bootstrap javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

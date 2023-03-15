@@ -26,7 +26,14 @@ def index(request):
 def poster(request):
     """View function for poster."""
 
-    return render(request, 'index.html')
+    return render(request, 'poster.html')
+
+#######################################################################################
+
+def report(request):
+    """View function for poster."""
+
+    return render(request, 'report.html')
 
 #######################################################################################
 
