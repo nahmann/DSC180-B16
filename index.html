@@ -1,67 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-  <header>
-    {% load static %}
-    <link rel="stylesheet" href="style.css">
+<html lang="en"> 
+ <header>
+    <link rel="stylesheet" href='style.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </header>
 
   <body>
+
+    <div class = "background_body">
     
     <nav class="navbar bg-body-tertiary fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Offcanvas navbar</a>
+        <img src ='logo.png' alt="logo" width="2.5%">
+        <a class="navbar-brand" href="#">DSC 180AB - Decentralized Location Consensus Through Proximity Tracing</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Decentralized Location Consensus Through Proximity Tracing</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href='index.html'>Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'locationConsensus:api-root' %}">API</a>
+                <a class="nav-link" href='https://dsc180-decentralized-location.herokuapp.com/locationConsensus/'>API</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="#">About us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Project Info</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">FAQ</a>
-              </li>
               <li class="nav-item">
                 <a class="nav-link" href="https://github.com/nahmann/DSC180-B16">Github</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'poster' %}">Poster</a>
+                <a class="nav-link" href='poster.html'>Poster</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="https://docs.google.com/document/d/1b4y0zB06y4HQ-aKkMiU41FJzYceVkcxbxp7MhrSX6FE/edit?usp=sharing">Report</a>
+                <a class="nav-link" href='report.html'>Report</a>
               </li>
 
               <li class="nav-item">
                 <a class="nav-link" href="https://hdsishowcase.com/">HDSI Showcase</a>
               </li>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                </ul>
-              </li>
             </ul>
           </div>
         </div>
@@ -70,16 +54,14 @@
 
     <br>
     <br>
-
-    <h1 class="text-center"> DSC 180A - Decentralized Location Consensus Through Proximity Tracing</h1>
-
-    <h3>
-      video 
-    </h3>
-
     <h3>
       Example
     </h3>
+    <center>
+      <video width="960" height="720" autoplay muted>
+        <source src='project_demo.mp4' type="video/mp4">
+      </video> 
+    </center>
 
     <div class="container ">
       <h3>
@@ -87,8 +69,9 @@
       </h3>
   
       <div class="row">
-        <div class="col-sm">
-          <img src=static/updated_diagram.png, alt="test" />
+        <div class="col-sm text-center">
+          {% load static %}
+          <img src="updated_diagram.png" alt="test" />
         </div>
         <div class="col-sm" id = "test">
           <p>
@@ -101,11 +84,14 @@
             all detect Kat's phone as being different and record her phone's ID. Kat's phone in return record 
             the ids of the others since their location is different from itself.
             <br>
+            <br>
             2. After an hour, the phones will send the IDs they have collected to the server. 
+            <br>
             <br>
             3. The server runs an a trust algorithm to determine whose phone was lying about it's 
             location. The algorithm we use was a majority voting system. In this example, Kat's 
             phone has the most votes and is identified as the liar.
+            <br>
             <br>
             4. Kat's phone ID is then stored in a blocklist after being identified as the person who 
             lied about their location.
@@ -114,19 +100,164 @@
       </div>
     </div>
 
-    <h3>
-      Project Info
-    </h3>
 
-    <h3>
-      About us
-    </h3>
+    <div class = "text_box">
+      <h3>
+        Project Info
+      </h3>
 
-    <h3>
-      FAQ
-    </h3>
+      <p>
+        Many applications make use of location data in order to provide their 
+        services, but malicious users can disrupt these by manipulating or 
+        faking their location. In an effort to combat and catch these users, 
+        our project involves a system to authenticate user location data without 
+        having one central authority in control of all the information. By 
+        leveraging the physical proximity necessary for devices to send and 
+        receive data through Bluetooth Low Energy signals, our system is able 
+        to detect users lying about their location without receiving any location 
+        information. Our portion of the project was creating the server backend 
+        that communicates with devices to store information about flagged users 
+        and process it for the purpose of adding malicious users to a blacklist.
+
+        More technical details can be found in our report. You can find the link 
+        for the report on the side navigation
+
+      </p>
+    </div>
+    
+
+
+    <div class = "text_box">
+      <h3>
+        About us
+      </h3>
+
+      <p>
+        Hello, and thanks for taking an interest in our project. This site was part of our 
+        Data Science 180 Capstone project that we worked on for 2 quarters under a mentor. 
+        The first quarter consisted of recreating results, exploring a domain, and proposing 
+        a project that would then be completed in the second quarter. We were one of 66 
+        project groups in the 2022-2023 iteration of the class. A full list of all the 
+        teams can be found on the HDSI showcase website (https://hdsishowcase.com/). 
+  
+        <br>
+  
+        Our project is unique in that it consists of 2 teams under the same mentor: 
+        one for the app (Group B16-2) and one for the server (Group B16-2). We are 
+        the server-side team and consist of 4 members: Nathan Ahmann, Mason Chan, 
+        Alex Guan, and Alan Miyazaki. Our mentor was Haojian Jin. Over the course 
+        of this quarter, we developed a backend server (on this website) and successfully 
+        linked it to the Android devices running the app team's code. Together these create a fully functioning system
+  
+      </p>
+    </div>
+
+    
+    <div class = "text_box">
+      <h3>
+        FAQ
+      </h3>
+
+      <ul>
+        <li>
+          What is decentralized location consensus?
+        </li>
+        <ul>
+          <li>
+            Decentralized Location Consensus means verifying users are at the 
+            location they claim to be. The decentralized part is saying that 
+            not all of the data should be stored in one place which helps 
+            protect privacy. The location consensus is that devices should 
+            reach a consensus of who is being truthful about their location.
+          </li>
+        </ul>
+
+        <li>
+          Why does it matter whether or not a location consensus is centralized?
+        </li>
+        <ul>
+          <li>
+            By establishing a decentralized location consensus, we are able to 
+            avoid one central entity receiving all data that is being processed. 
+            This allows for more data privacy when contacting our server, as not 
+            all information regarding the users will be in one singular location.
+          </li>
+        </ul>
+
+        <li>
+          Is there a real world example of how a decentralized location consensus would be beneficial?
+        </li>
+
+        <ul>
+          <li>
+            Location authentication is critical for several different mobile 
+            applications which rely on the position of the user for its services. 
+            Additionally, ensuring that the location consensus is decentralized 
+            will help with user privacy, as there would be no one single entity 
+            that has access to all information. For example, if the food app 
+            Grubhub were to implement a system like this, it would mean that 
+            drivers would never have to worry about customers lying about their 
+            current location. This would also mean customers would never need to 
+            worry about a data breach of Grubhub, which could compromise the 
+            location information of thousands of users.
+
+          </li>
+        </ul>
+
+        <li>
+          What were some of the greatest challenges of this project on the server side?
+        </li>
+
+        <ul>
+          <li>
+            Determining what kind of information clients would send to the server 
+            was an early hurdle for the team, as we were not exactly sure how the 
+            server would be able to process the data. We considered different hash 
+            functions, lists, strings, etc. before deciding that a JSON object with 
+            ID information was the best option.
+          </li>
+        </ul>
+
+        <li>
+          Why did your project split into 2 groups?
+        </li>
+
+        <ul>
+          <li>
+            In order to implement a decentralized location consensus, our 
+            project was essentially split into two main groups. The client 
+            side team would focus on the development of a mobile application, 
+            which could communicate with other users via Bluetooth Low Energy 
+            signals. The server side team (us) worked on creating a server that 
+            would look at interactions between clients and determine which users 
+            could be authenticated or blacklisted. Both sides of the project are 
+            quite involved, so having two different teams was appropriate.
+          </li>
+        </ul>
+
+        <li>
+          Why is this a data science project?
+        </li>
+
+        <ul>
+          <li>
+            The core component of our project is data privacy, which is always 
+            critical in the practice of data science. Understanding ethical 
+            practices regarding data collection is important at all times, 
+            due to safety concerns and the protection of individual privacy. 
+            While our project may not be running regression or exploring 
+            machine learning like other data science projects, it still 
+            demonstrates a main principle of the discipline which involves 
+            data collection and personal safety.
+          </li>
+        </ul>
+
+      </ul>
+    </div>
+
 
     <!-- Bootstrap javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </div>
   </body>
   </html>

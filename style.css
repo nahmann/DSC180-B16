@@ -7,8 +7,19 @@
     /* background-color: green; */
 }
 
-
+.text_box {
+    /* text-align: center; */
+    width: 80%;
+    margin: auto;
+}
 
 .col-sm{
     border-style:solid;
+}
+.poster_div{
+    text-align: center;
+}
+
+.background_body{
+    /* background: linear-gradient(to bottom, #ff99ff 0%, #66ccff 100%); */
 }
