@@ -75,26 +75,29 @@
         </div>
         <div class="col-sm" id = "test">
           <p>
-            Steps
-            <br>
-            1. The users are all physically at UCSD and have been physically near each other.
-            One person, in this case Kat, decides to spoof/change their location on their phone with a VPN.
-            As a result, Kat's phone is no longer declaring that it is in UCSD. All the other users are 
-            still declaring their location to be at UCSD. As a result, the phones of Alice, Bob, Daniel, and Emily 
-            all detect Kat's phone as being different and record her phone's ID. Kat's phone in return record 
-            the ids of the others since their location is different from itself.
+            This diagram represents an example of our project in action. 
+            It is the same example used in the video demonstration.
             <br>
             <br>
-            2. After an hour, the phones will send the IDs they have collected to the server. 
+            There are 5 users with IDs labeled 1 through 5 and a name next to them for convenience.
+            These users are all physically at UCSD and are physically near each other.
+            All of them except for Kat (ID 3) claim to be at UCSD. Kat is instead claiming to be in New York.
             <br>
+            With our app running the users' phones are exchanging ID and location data between each other.
+            Each device adds an ID to a list if the other ID has a different location than the current device.
+            So in this case Alice and Bob have the same location so Alice does NOT add Bob's ID.
+            However, Kat and Alice have different locations, so Alice's phone adds Kat's ID to its list and Kat's phone adds Alice's ID to its list.
+            Repeating this accross all the users, everyone adds Kat (ID 3) to their list, while Kat adds every other user.
             <br>
-            3. The server runs an a trust algorithm to determine whose phone was lying about it's 
-            location. The algorithm we use was a majority voting system. In this example, Kat's 
-            phone has the most votes and is identified as the liar.
+            Now this data is sent to the server.
             <br>
+            Every hour, the server will attempt to update its blacklist with new data. 
+            At this time a majority vote is taken and determines which users are lying about their location.
+            In our example, Kat recieves 4 votes and every other user recieves 1. 
+            Converting these to percentages, Kat had 80% of users claim that she was lying about her location so her ID is added to the blacklist.
+            The rest of the users only had 20% of users claim they were lying so they are not added to the blacklist.
             <br>
-            4. Kat's phone ID is then stored in a blocklist after being identified as the person who 
-            lied about their location.
+            Now the blacklist has been updated and the app can verify users using that information.
           </p>
         </div>
       </div>
@@ -138,12 +141,12 @@
         The first quarter consisted of recreating results, exploring a domain, and proposing 
         a project that would then be completed in the second quarter. We were one of 66 
         project groups in the 2022-2023 iteration of the class. A full list of all the 
-        teams can be found on the HDSI showcase website (https://hdsishowcase.com/). 
+        teams can be found on the <a href="https://hdsishowcase.com/">HDSI Showcase</a>. 
   
         <br>
   
         Our project is unique in that it consists of 2 teams under the same mentor: 
-        one for the app (Group B16-2) and one for the server (Group B16-2). We are 
+        one for the app (Group B16-2) and one for the server (Group B16-1). We are 
         the server-side team and consist of 4 members: Nathan Ahmann, Mason Chan, 
         Alex Guan, and Alan Miyazaki. Our mentor was Haojian Jin. Over the course 
         of this quarter, we developed a backend server (on this website) and successfully 
