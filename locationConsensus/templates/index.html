@@ -8,6 +8,8 @@
   </header>
 
   <body>
+
+    <div class = "background_body">
     
     <nav class="navbar bg-body-tertiary fixed-top">
       <div class="container-fluid">
@@ -17,13 +19,13 @@
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Decentralized Location Consensus Through Proximity Tracing</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'locationConsensus:api-root' %}">API</a>
@@ -87,11 +89,14 @@
             all detect Kat's phone as being different and record her phone's ID. Kat's phone in return record 
             the ids of the others since their location is different from itself.
             <br>
+            <br>
             2. After an hour, the phones will send the IDs they have collected to the server. 
+            <br>
             <br>
             3. The server runs an a trust algorithm to determine whose phone was lying about it's 
             location. The algorithm we use was a majority voting system. In this example, Kat's 
             phone has the most votes and is identified as the liar.
+            <br>
             <br>
             4. Kat's phone ID is then stored in a blocklist after being identified as the person who 
             lied about their location.
@@ -162,7 +167,96 @@
         <li>
           What is decentralized location consensus?
         </li>
-        
+        <ul>
+          <li>
+            Decentralized Location Consensus means verifying users are at the 
+            location they claim to be. The decentralized part is saying that 
+            not all of the data should be stored in one place which helps 
+            protect privacy. The location consensus is that devices should 
+            reach a consensus of who is being truthful about their location.
+          </li>
+        </ul>
+
+        <li>
+          Why does it matter whether or not a location consensus is centralized?
+        </li>
+        <ul>
+          <li>
+            By establishing a decentralized location consensus, we are able to 
+            avoid one central entity receiving all data that is being processed. 
+            This allows for more data privacy when contacting our server, as not 
+            all information regarding the users will be in one singular location.
+          </li>
+        </ul>
+
+        <li>
+          Is there a real world example of how a decentralized location consensus would be beneficial?
+        </li>
+
+        <ul>
+          <li>
+            Location authentication is critical for several different mobile 
+            applications which rely on the position of the user for its services. 
+            Additionally, ensuring that the location consensus is decentralized 
+            will help with user privacy, as there would be no one single entity 
+            that has access to all information. For example, if the food app 
+            Grubhub were to implement a system like this, it would mean that 
+            drivers would never have to worry about customers lying about their 
+            current location. This would also mean customers would never need to 
+            worry about a data breach of Grubhub, which could compromise the 
+            location information of thousands of users.
+
+          </li>
+        </ul>
+
+        <li>
+          What were some of the greatest challenges of this project on the server side?
+        </li>
+
+        <ul>
+          <li>
+            Determining what kind of information clients would send to the server 
+            was an early hurdle for the team, as we were not exactly sure how the 
+            server would be able to process the data. We considered different hash 
+            functions, lists, strings, etc. before deciding that a JSON object with 
+            ID information was the best option.
+          </li>
+        </ul>
+
+        <li>
+          Why did your project split into 2 groups?
+        </li>
+
+        <ul>
+          <li>
+            In order to implement a decentralized location consensus, our 
+            project was essentially split into two main groups. The client 
+            side team would focus on the development of a mobile application, 
+            which could communicate with other users via Bluetooth Low Energy 
+            signals. The server side team (us) worked on creating a server that 
+            would look at interactions between clients and determine which users 
+            could be authenticated or blacklisted. Both sides of the project are 
+            quite involved, so having two different teams was appropriate.
+          </li>
+        </ul>
+
+        <li>
+          Why is this a data science project?
+        </li>
+
+        <ul>
+          <li>
+            The core component of our project is data privacy, which is always 
+            critical in the practice of data science. Understanding ethical 
+            practices regarding data collection is important at all times, 
+            due to safety concerns and the protection of individual privacy. 
+            While our project may not be running regression or exploring 
+            machine learning like other data science projects, it still 
+            demonstrates a main principle of the discipline which involves 
+            data collection and personal safety.
+          </li>
+        </ul>
+
       </ul>
       <p>
         Decentralized Location Consensus means verifying users are at the 
@@ -176,5 +270,6 @@
 
     <!-- Bootstrap javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </div>
   </body>
 {% endblock %}
